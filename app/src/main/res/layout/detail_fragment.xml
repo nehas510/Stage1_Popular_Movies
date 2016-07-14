@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context="com.example.neha.p1_popularmovies.Detail.DetailFragment"
+    android:weightSum="1">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Title"
+            android:id="@+id/textViewTitle"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:textSize="30dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:shadowColor="#ffffff"
+            android:textStyle="bold"
+            android:padding="2dp"
+            android:layout_weight="0.08" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below ="@id/textViewTitle"
+            android:orientation="horizontal"
+            android:id="@+id/posterLayout"
+            android:layout_weight="0.07"
+            android:weightSum="1">
+
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="175dp"
+                android:id="@+id/imageViewPoster" />
+
+            <LinearLayout
+                android:layout_width="183dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="bottom|left|right|top"
+                android:layout_weight="0.69"
+                android:layout_marginLeft="8dp">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ratings"
+                    android:id="@+id/textViewRatingsKey"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="5dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewRatings"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="5dp"
+                    android:textSize="20dp"
+                    android:textStyle="italic"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/releaseDate"
+                    android:id="@+id/textViewDateKey"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="5dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewDate"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="5dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/textViewSynopis"
+            android:layout_alignParentStart="true"
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimaryDark" />
+
+    </LinearLayout>
