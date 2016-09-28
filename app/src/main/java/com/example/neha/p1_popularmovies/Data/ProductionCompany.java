@@ -1,13 +1,12 @@
 package com.example.neha.p1_popularmovies.Data;
 
-import java.util.HashMap;
-import java.util.Map;
+import io.realm.RealmObject;
 
-public class ProductionCompany {
+public class ProductionCompany extends RealmObject{
 
     private String name;
     private Integer id;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+   // private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      *
@@ -45,12 +44,12 @@ public class ProductionCompany {
         this.id = id;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+//    public Map<String, Object> getAdditionalProperties() {
+//        return this.additionalProperties;
+//    }
+//
+//    public void setAdditionalProperty(String name, Object value) {
+//        this.additionalProperties.put(name, value);
+//    }
 
 }

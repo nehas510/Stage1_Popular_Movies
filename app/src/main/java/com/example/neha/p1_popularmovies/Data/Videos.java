@@ -1,47 +1,48 @@
 package com.example.neha.p1_popularmovies.Data;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 
-public class Genre extends RealmObject{
+/**
+ * Created by neha on 9/26/16.
+ */
+
+
+
+public class Videos extends RealmObject{
+
 
     private Integer id;
-    private String name;
+    private RealmList<VideoResult> results = new RealmList<>();
   //  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     *
-     * @return
-     * The id
+     * @return The id
      */
+
     public Integer getId() {
         return id;
     }
 
     /**
-     *
-     * @param id
-     * The id
+     * @param id The id
      */
     public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     *
-     * @return
-     * The name
+     * @return The results
      */
-    public String getName() {
-        return name;
+    public RealmList<VideoResult> getResults() {
+        return results;
     }
 
     /**
-     *
-     * @param name
-     * The name
+     * @param results The results
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setResults(RealmList<VideoResult> results) {
+        this.results = results;
     }
 
 //    public Map<String, Object> getAdditionalProperties() {
@@ -51,5 +52,5 @@ public class Genre extends RealmObject{
 //    public void setAdditionalProperty(String name, Object value) {
 //        this.additionalProperties.put(name, value);
 //    }
-
 }
+

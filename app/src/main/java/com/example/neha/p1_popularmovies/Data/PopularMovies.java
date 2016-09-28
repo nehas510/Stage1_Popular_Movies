@@ -1,21 +1,19 @@
 package com.example.neha.p1_popularmovies.Data;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import io.realm.RealmList;
+import io.realm.RealmObject;
 
 /**
  * Created by neha on 7/9/16.
  */
 
-public class PopularMovies {
+public class PopularMovies extends RealmObject{
 
     private Integer page;
-    private List<Result> results = new ArrayList<Result>();
+    private RealmList<Result> results = new RealmList<>();
     private Integer total_results;
     private Integer total_pages;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+  //  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      *
@@ -40,7 +38,7 @@ public class PopularMovies {
      * @return
      * The results
      */
-    public List<Result> getResults() {
+    public RealmList<Result> getResults() {
         return results;
     }
 
@@ -49,7 +47,7 @@ public class PopularMovies {
      * @param results
      * The results
      */
-    public void setResults(List<Result> results) {
+    public void setResults(RealmList<Result> results) {
         this.results = results;
     }
 
@@ -90,12 +88,12 @@ public class PopularMovies {
     }
 
 
-    public Map<String, Object> getAdditionalProperties() {
+  /*  public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
     }
 
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
-    }
+    }*/
 
 }

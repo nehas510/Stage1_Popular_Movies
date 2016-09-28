@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.example.neha.p1_popularmovies.Data.Movies;
 import com.example.neha.p1_popularmovies.Data.PopularMovies;
+import com.example.neha.p1_popularmovies.Data.Videos;
 import com.example.neha.p1_popularmovies.Detail.DetailFragment;
 import com.example.neha.p1_popularmovies.MovieManager;
 import com.example.neha.p1_popularmovies.MoviesFragment;
@@ -72,6 +73,34 @@ public class MoviePresenter {
     }
 
 
+    public void playVideo(final String ids, final Callback<Videos> callback){
+        ((DetailFragment)mView).showProgress();
+        getMovieManager().getVideosbyId(ids, new Callback<Videos>() {
+            @Override
+            public void success(Videos video, retrofit.client.Response response) {
+
+                if(callback!=null) {
+                    if (mView instanceof MoviesFragment) {
+                        ((DetailFragment)mView).hideProgress();
+                        ((DetailFragment) mView).getVideoKey(video.getResults().get(2).getKey());
+                        callback.success(video,response);
+                    }
+                }
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                if (callback != null) {
+                    ((DetailFragment)mView).hideProgress();
+                    Toast.makeText(mView.getContext(), "something is not right ", Toast.LENGTH_SHORT).show();
+                    callback.failure(error);
+
+                }
+            }
+        });
+
+    }
     public void getMovieType(final String type, final Callback<PopularMovies> callback){
         ((MoviesFragment)mView).showProgress();
         getMovieManager().getMoviesPage(type, new Callback<PopularMovies>() {

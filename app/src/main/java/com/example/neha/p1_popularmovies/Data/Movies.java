@@ -1,21 +1,23 @@
 package com.example.neha.p1_popularmovies.Data;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by neha on 7/14/16.
  */
-public class Movies {
+public class Movies extends RealmObject {
 
     private Boolean adult;
     private String backdrop_path;
-    private Object belongs_to_collection;
+    private BelongsToCollection belongs_to_collection;
     private Integer budget;
-    private List<Genre> genres = new ArrayList<Genre>();
+    private RealmList<Genre> genres = new RealmList<>();
     private String homepage;
+    @PrimaryKey
     private Integer id;
     private String imdbId;
     private String original_language;
@@ -23,19 +25,19 @@ public class Movies {
     private String overview;
     private Double popularity;
     private String poster_path;
-    private List<ProductionCompany> production_companies = new ArrayList<ProductionCompany>();
-    private List<ProductionCountry> production_countries = new ArrayList<ProductionCountry>();
+    private RealmList<ProductionCompany> production_companies = new RealmList<>();
+    private RealmList<ProductionCountry> production_countries = new RealmList<>();
     private String release_date;
     private Integer revenue;
     private Integer runtime;
-    private List<SpokenLanguage> spoken_languages = new ArrayList<SpokenLanguage>();
+    private RealmList<SpokenLanguage> spoken_languages = new RealmList<>();
     private String status;
     private String tagline;
     private String title;
     private Boolean video;
     private Double vote_average;
     private Integer vote_count;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+   // private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      *
@@ -78,7 +80,7 @@ public class Movies {
      * @return
      * The belongsToCollection
      */
-    public Object getBelongsToCollection() {
+    public BelongsToCollection getBelongsToCollection() {
         return belongs_to_collection;
     }
 
@@ -87,7 +89,7 @@ public class Movies {
      * @param belongsToCollection
      * The belongs_to_collection
      */
-    public void setBelongsToCollection(Object belongsToCollection) {
+    public void setBelongsToCollection(BelongsToCollection belongsToCollection) {
         this.belongs_to_collection = belongsToCollection;
     }
 
@@ -123,7 +125,7 @@ public class Movies {
      * @param genres
      * The genres
      */
-    public void setGenres(List<Genre> genres) {
+    public void setGenres(RealmList<Genre> genres) {
         this.genres = genres;
     }
 
@@ -278,7 +280,7 @@ public class Movies {
      * @return
      * The productionCompanies
      */
-    public List<ProductionCompany> getProductionCompanies() {
+    public RealmList<ProductionCompany> getProductionCompanies() {
         return production_companies;
     }
 
@@ -287,7 +289,7 @@ public class Movies {
      * @param productionCompanies
      * The production_companies
      */
-    public void setProductionCompanies(List<ProductionCompany> productionCompanies) {
+    public void setProductionCompanies(RealmList<ProductionCompany> productionCompanies) {
         this.production_companies = productionCompanies;
     }
 
@@ -296,7 +298,7 @@ public class Movies {
      * @return
      * The productionCountries
      */
-    public List<ProductionCountry> getProductionCountries() {
+    public RealmList<ProductionCountry> getProductionCountries() {
         return production_countries;
     }
 
@@ -305,7 +307,7 @@ public class Movies {
      * @param productionCountries
      * The production_countries
      */
-    public void setProductionCountries(List<ProductionCountry> productionCountries) {
+    public void setProductionCountries(RealmList<ProductionCountry> productionCountries) {
         this.production_countries = productionCountries;
     }
 
@@ -368,7 +370,7 @@ public class Movies {
      * @return
      * The spokenLanguages
      */
-    public List<SpokenLanguage> getSpokenLanguages() {
+    public RealmList<SpokenLanguage> getSpokenLanguages() {
         return spoken_languages;
     }
 
@@ -378,7 +380,7 @@ public class Movies {
      * The spoken_languages
      */
 
-    public void setSpokenLanguages(List<SpokenLanguage> spokenLanguages) {
+    public void setSpokenLanguages(RealmList<SpokenLanguage> spokenLanguages) {
         this.spoken_languages = spokenLanguages;
     }
 
@@ -490,13 +492,13 @@ public class Movies {
         this.vote_count = voteCount;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+//    public Map<String, Object> getAdditionalProperties() {
+//        return this.additionalProperties;
+//    }
+//
+//    public void setAdditionalProperty(String name, Object value) {
+//        this.additionalProperties.put(name, value);
+//    }
 
 }
 

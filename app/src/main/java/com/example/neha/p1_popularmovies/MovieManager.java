@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.neha.p1_popularmovies.Data.Movies;
 import com.example.neha.p1_popularmovies.Data.PopularMovies;
+import com.example.neha.p1_popularmovies.Data.Videos;
 import com.example.neha.p1_popularmovies.moviedb.MovieApiClient;
 
 import retrofit.Callback;
@@ -16,7 +17,7 @@ public class MovieManager {
 
     //IMPORTANT NOTE:
     // The API Key has been removed as it is Illegal to share the personal API Key, Please put in yours to test the app!
-    private static String API_KEY = "";
+    private static String API_KEY = "1f46bd218f273adbb2fde3978739c5be";
     /**
      * Constructor
      */
@@ -45,5 +46,9 @@ public class MovieManager {
 
     public void getMoviesbyId(String id, Callback<Movies> callback) {
         MovieApiClient.get().getMoviesbyId(id,API_KEY,callback);
+    }
+
+    public void getVideosbyId(String id, Callback<Videos> callback) {
+        MovieApiClient.get().getVideosbyId(id,API_KEY,callback);
     }
 }

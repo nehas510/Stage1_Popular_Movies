@@ -104,6 +104,8 @@ public class MoviesFragment extends Fragment {
         this.results = results;
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

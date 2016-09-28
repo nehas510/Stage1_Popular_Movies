@@ -6,8 +6,8 @@ android {
 
     defaultConfig {
         applicationId "com.example.neha.p1_popularmovies"
-        minSdkVersion 21
-        targetSdkVersion 24
+        minSdkVersion 19
+        targetSdkVersion 19
         versionCode 1
         versionName "1.0"
     }
@@ -18,6 +18,8 @@ android {
         }
     }
 }
+
+apply plugin: 'realm-android'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

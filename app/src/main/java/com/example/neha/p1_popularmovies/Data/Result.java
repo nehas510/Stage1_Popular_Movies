@@ -1,20 +1,18 @@
 package com.example.neha.p1_popularmovies.Data;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import io.realm.RealmList;
+import io.realm.RealmObject;
 
 /**
  * Created by neha on 7/9/16.
  */
-public class Result {
+public class Result extends RealmObject{
 
     private String poster_path;
     private Boolean adult;
     private String overview;
     private String release_date;
-    private List<Integer> genre_ids = new ArrayList<Integer>();
+    private RealmList<RealmInteger> genre_ids = new RealmList<>();
     private Integer id;
     private String original_title;
     private String original_language;
@@ -24,7 +22,7 @@ public class Result {
     private Integer vote_count;
     private Boolean video;
     private Double vote_average;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+  //  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * @return The posterPath
@@ -85,7 +83,7 @@ public class Result {
     /**
      * @return The genreIds
      */
-    public List<Integer> getGenreIds() {
+    public RealmList<RealmInteger> getGenreIds() {
         return genre_ids;
     }
 
@@ -93,7 +91,7 @@ public class Result {
      * @param genreIds The genre_ids
      */
 
-    public void setGenreIds(List<Integer> genreIds) {
+    public void setGenreIds(RealmList<RealmInteger> genreIds) {
         this.genre_ids = genreIds;
     }
 
@@ -229,12 +227,12 @@ public class Result {
         this.vote_average = voteAverage;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+//    public Map<String, Object> getAdditionalProperties() {
+//        return this.additionalProperties;
+//    }
+//
+//    public void setAdditionalProperty(String name, Object value) {
+//        this.additionalProperties.put(name, value);
+//    }
 
 }

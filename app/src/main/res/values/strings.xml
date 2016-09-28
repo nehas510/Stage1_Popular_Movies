@@ -11,4 +11,9 @@
     <string name="ratings">Ratings :</string>
     <string name="popular">Popular</string>
     <string name="Title">title</string>
+    <string name="watch_now">Watch Now</string>
+    <string name="watch_trailer">Watch Trailer</string>
+    <string name="mark_as_fav">Mark as Favorite</string>
+
+
 </resources>
