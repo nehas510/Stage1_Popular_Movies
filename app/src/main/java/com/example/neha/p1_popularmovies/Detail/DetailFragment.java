@@ -1,5 +1,6 @@
 package com.example.neha.p1_popularmovies.Detail;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -202,9 +203,16 @@ protected  SpinnerProgressBar spb;
                 public void success(Videos videos, Response response) {
 
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:"+videoKey));
-                    intent.putExtra("VIDEO_ID", videoKey);
-                    startActivity(intent);
+                    Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://www.youtube.com/watch?v=" + videoKey));
 
+                    try {
+                        intent.putExtra("VIDEO_ID", videoKey);
+                        startActivity(intent);
+                    } catch (ActivityNotFoundException ex) {
+                        webIntent.putExtra("VIDEO_ID", videoKey);
+                        startActivity(webIntent);
+                    }
 
 
                 }

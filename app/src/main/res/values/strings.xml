@@ -16,6 +16,7 @@
     <string name="mark_as_fav">Mark as Favorite</string>
     <string name="favourites">Favourites</string>
     <string name="reviews">Reviews</string>
+    <string name="no_data_available">No Data Available!</string>
 
-
+    no_data_available
 </resources>

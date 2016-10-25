@@ -25,7 +25,6 @@ import retrofit.client.Response;
 
 public class MoviesFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -34,8 +33,7 @@ public class MoviesFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-  //  String[] data= {"one","two","tgree","uiuo","you"};
-  //  private  List<String> imgURL = new ArrayList<String>();
+
     private List<Movies> results = new ArrayList<Movies>();
     private MoviePresenter mPresenter;
     private RecyclerView recyclerView;
@@ -44,10 +42,12 @@ public class MoviesFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private Realm realm;
     private boolean isTab;
+  //  private TextView emptyView;
 
 
 
-   // private OnFragmentInteractionListener mListener;
+
+    // private OnFragmentInteractionListener mListener;
 
     public MoviesFragment(String type) {
         this.type = type;
@@ -66,23 +66,7 @@ public class MoviesFragment extends Fragment {
 
         // Required empty public constructor
     }
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     *
-     * @return A new instance of fragment MoviesFragment.
-     */
-    // TODO: Rename and change types and number of parameters
- /*   public static MoviesFragment newInstance(String param1, String param2) {
-        MoviesFragment fragment = new MoviesFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-*/
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,11 +92,24 @@ public class MoviesFragment extends Fragment {
 
 
             recyclerView = (RecyclerView) view.findViewById(R.id.gridRecycler);
-            mAdapter = new GridViewAdapter(this, results,isTab,type);
-            layoutManager = new GridLayoutManager(getContext(), 2);
-            recyclerView.setLayoutManager(layoutManager);
-            recyclerView.setAdapter(mAdapter);
+        mAdapter = new GridViewAdapter(this, results,isTab,type);
+        layoutManager = new GridLayoutManager(getContext(), 2);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(mAdapter);
+        //    emptyView = (TextView) view.findViewById(R.id.empty_view);
 
+   /*     if (results.isEmpty()) {
+            recyclerView.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
+        }
+        else {
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
+
+        }
+
+
+*/
 
     }
 
@@ -145,13 +142,11 @@ public class MoviesFragment extends Fragment {
         if(type.contains("favourites")){
             realm = Realm.getDefaultInstance();
             realm.beginTransaction();
-         //  PopularMovies movies = realm.where(PopularMovies.class).equalTo("type","favourites").findFirst();
 
             RealmResults<PopularMovies> popularMovies = realm.where(PopularMovies.class).equalTo("type","favourites").findAll();
            List<Movies> movies = popularMovies.get(0).getResults().where().distinct("original_title");
             realm.commitTransaction();
             getResults(movies);
-         //   getResults(movies.getResults());
             updateRecyclerView(layoutInflater,type);
 
 
