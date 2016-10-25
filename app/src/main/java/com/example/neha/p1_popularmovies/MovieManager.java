@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.neha.p1_popularmovies.Data.Movies;
 import com.example.neha.p1_popularmovies.Data.PopularMovies;
+import com.example.neha.p1_popularmovies.Data.Reviews;
 import com.example.neha.p1_popularmovies.Data.Videos;
 import com.example.neha.p1_popularmovies.moviedb.MovieApiClient;
 
@@ -33,15 +34,18 @@ public class MovieManager {
     public MovieManager(Context context, String url) {
       context = mContext;
         setUrl(url);
+
     }
 
     public void setUrl(String url) {
         MovieApiClient.init(url);
+
     }
 
 
     public void getMoviesPage(String type, Callback<PopularMovies> callback) {
         MovieApiClient.get().getMoviesPage(type,API_KEY,callback);
+
     }
 
     public void getMoviesbyId(String id, Callback<Movies> callback) {
@@ -50,5 +54,9 @@ public class MovieManager {
 
     public void getVideosbyId(String id, Callback<Videos> callback) {
         MovieApiClient.get().getVideosbyId(id,API_KEY,callback);
+    }
+
+    public void getReviews(String id, Callback<Reviews> callback) {
+        MovieApiClient.get().getReviews(id,API_KEY,callback);
     }
 }

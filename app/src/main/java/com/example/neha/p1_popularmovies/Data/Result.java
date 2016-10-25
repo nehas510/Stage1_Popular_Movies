@@ -2,6 +2,7 @@ package com.example.neha.p1_popularmovies.Data;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by neha on 7/9/16.
@@ -13,6 +14,7 @@ public class Result extends RealmObject{
     private String overview;
     private String release_date;
     private RealmList<RealmInteger> genre_ids = new RealmList<>();
+    @PrimaryKey
     private Integer id;
     private String original_title;
     private String original_language;
@@ -22,7 +24,8 @@ public class Result extends RealmObject{
     private Integer vote_count;
     private Boolean video;
     private Double vote_average;
-  //  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    //  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * @return The posterPath
@@ -226,6 +229,8 @@ public class Result extends RealmObject{
     public void setVoteAverage(Double voteAverage) {
         this.vote_average = voteAverage;
     }
+
+
 
 //    public Map<String, Object> getAdditionalProperties() {
 //        return this.additionalProperties;

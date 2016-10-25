@@ -14,6 +14,8 @@
     <string name="watch_now">Watch Now</string>
     <string name="watch_trailer">Watch Trailer</string>
     <string name="mark_as_fav">Mark as Favorite</string>
+    <string name="favourites">Favourites</string>
+    <string name="reviews">Reviews</string>
 
 
 </resources>

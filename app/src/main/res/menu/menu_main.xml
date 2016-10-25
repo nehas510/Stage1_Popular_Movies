@@ -22,4 +22,10 @@
         android:orderInCategory="100"
         android:title="@string/now_playing"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/favourites"
+        android:orderInCategory="100"
+        android:title="@string/favourites"
+        app:showAsAction="never" />
 </menu>

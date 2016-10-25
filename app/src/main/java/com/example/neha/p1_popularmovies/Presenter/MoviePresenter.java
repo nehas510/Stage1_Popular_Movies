@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.example.neha.p1_popularmovies.Data.Movies;
 import com.example.neha.p1_popularmovies.Data.PopularMovies;
+import com.example.neha.p1_popularmovies.Data.Reviews;
 import com.example.neha.p1_popularmovies.Data.Videos;
 import com.example.neha.p1_popularmovies.Detail.DetailFragment;
 import com.example.neha.p1_popularmovies.MovieManager;
@@ -80,10 +81,15 @@ public class MoviePresenter {
             public void success(Videos video, retrofit.client.Response response) {
 
                 if(callback!=null) {
-                    if (mView instanceof MoviesFragment) {
+                    if (mView instanceof DetailFragment) {
                         ((DetailFragment)mView).hideProgress();
-                        ((DetailFragment) mView).getVideoKey(video.getResults().get(2).getKey());
-                        callback.success(video,response);
+                        if(video.getResults().size() >= 1) {
+                            ((DetailFragment) mView).getVideoKey(video.getResults().get(0).getKey());
+                            callback.success(video, response);
+                        }
+                        else
+                            Toast.makeText(mView.getContext(), "No trailer available! ", Toast.LENGTH_SHORT).show();
+
                     }
                 }
 
@@ -101,26 +107,27 @@ public class MoviePresenter {
         });
 
     }
-    public void getMovieType(final String type, final Callback<PopularMovies> callback){
-        ((MoviesFragment)mView).showProgress();
-        getMovieManager().getMoviesPage(type, new Callback<PopularMovies>() {
-            @Override
-            public void success(PopularMovies popularMovies, retrofit.client.Response response) {
 
-             if(callback!=null) {
-                 if (mView instanceof MoviesFragment) {
-                     ((MoviesFragment)mView).hideProgress();
-                     ((MoviesFragment) mView).getResults(popularMovies.getResults());
-                     callback.success(popularMovies,response);
-                 }
-             }
+    public void getReviews(final String ids, final Callback<Reviews> callback){
+        ((DetailFragment)mView).showProgress();
+        getMovieManager().getReviews(ids, new Callback<Reviews>() {
+            @Override
+            public void success(Reviews review, retrofit.client.Response response) {
+
+                if(callback!=null) {
+                    if (mView instanceof DetailFragment) {
+                        ((DetailFragment)mView).hideProgress();
+                        ((DetailFragment) mView).getReviews(review.getResults());
+                        callback.success(review,response);
+                    }
+                }
 
             }
 
             @Override
             public void failure(RetrofitError error) {
                 if (callback != null) {
-                    ((MoviesFragment)mView).hideProgress();
+                    ((DetailFragment)mView).hideProgress();
                     Toast.makeText(mView.getContext(), "something is not right ", Toast.LENGTH_SHORT).show();
                     callback.failure(error);
 
@@ -129,5 +136,40 @@ public class MoviePresenter {
         });
 
     }
+
+
+    public void getMovieType(final String type, final Callback<PopularMovies> callback) {
+        if (!(type.contains("favourites"))) {
+            ((MoviesFragment) mView).showProgress();
+            getMovieManager().getMoviesPage(type, new Callback<PopularMovies>() {
+                @Override
+                public void success(PopularMovies popularMovies, retrofit.client.Response response) {
+
+                    if (callback != null) {
+                        if (mView instanceof MoviesFragment) {
+                            popularMovies.setType(type);
+                            ((MoviesFragment) mView).hideProgress();
+                            ((MoviesFragment) mView).getResults(popularMovies.getResults());
+                            callback.success(popularMovies, response);
+                        }
+
+                    }
+
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    if (callback != null) {
+                        ((MoviesFragment) mView).hideProgress();
+                        Toast.makeText(mView.getContext(), "something is not right ", Toast.LENGTH_SHORT).show();
+                        callback.failure(error);
+
+                    }
+                }
+            });
+
+        }
+    }
+
 
 }

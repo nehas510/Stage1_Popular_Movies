@@ -2,6 +2,7 @@ package com.example.neha.p1_popularmovies.moviedb;
 
 import com.example.neha.p1_popularmovies.Data.Movies;
 import com.example.neha.p1_popularmovies.Data.PopularMovies;
+import com.example.neha.p1_popularmovies.Data.Reviews;
 import com.example.neha.p1_popularmovies.Data.Videos;
 
 import retrofit.Callback;
@@ -23,5 +24,11 @@ public interface MovieApiService {
 
     @GET("/3/movie/{id}/videos")
     void getVideosbyId(@Path("id") String id, @Query("api_key") String API_KEY, Callback<Videos> callback);
+
+
+    @GET("/3/movie/{id}/reviews")
+    void getReviews(@Path("id") String id, @Query("api_key") String API_KEY, Callback<Reviews> callback);
+
+
 
 }

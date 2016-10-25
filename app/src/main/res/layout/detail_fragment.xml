@@ -6,7 +6,10 @@
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     tools:context="com.example.neha.p1_popularmovies.Detail.DetailFragment"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:gravity="center">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -99,16 +102,28 @@
                             android:textSize="20dp"
                             android:textColor="@color/colorPrimaryDark" />
 
-                        <RadioButton
-                            android:text="@string/mark_as_fav"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:layout_width="match_parent"
+                        <LinearLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/radioButton"
-                            android:layout_weight="0.08"
-                            android:button="@android:drawable/btn_star_big_on"
-                            android:textSize="20dp"
-                            android:textStyle="normal|bold" />
+                            android:orientation="horizontal">
+
+                            <ImageButton
+                                android:layout_width="64dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/radioButton"
+                                android:background="@drawable/favourite_selector" />
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/favourites"
+                                android:layout_alignParentStart="true"
+                                android:layout_margin="5dp"
+                                android:textSize="20dp"
+                                android:textColor="@color/colorPrimaryDark" />
+
+
+                        </LinearLayout>
 
                     </LinearLayout>
                 </LinearLayout>
@@ -160,6 +175,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/reviews"
+                        android:id="@+id/textReview"
+                        android:layout_alignParentStart="true"
+                        android:layout_margin="5dp"
+                        android:textSize="20dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textStyle="bold" />
 
                     <android.support.v7.widget.RecyclerView
                         android:layout_width="match_parent"

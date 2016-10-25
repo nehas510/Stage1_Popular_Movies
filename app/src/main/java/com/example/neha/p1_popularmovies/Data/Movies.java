@@ -17,10 +17,11 @@ public class Movies extends RealmObject {
     private Integer budget;
     private RealmList<Genre> genres = new RealmList<>();
     private String homepage;
-    @PrimaryKey
+
     private Integer id;
     private String imdbId;
     private String original_language;
+    @PrimaryKey
     private String original_title;
     private String overview;
     private Double popularity;
@@ -37,6 +38,7 @@ public class Movies extends RealmObject {
     private Boolean video;
     private Double vote_average;
     private Integer vote_count;
+    private boolean favourite;
    // private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
@@ -491,6 +493,17 @@ public class Movies extends RealmObject {
     public void setVoteCount(Integer voteCount) {
         this.vote_count = voteCount;
     }
+
+
+    public boolean getFavourite() {
+        return favourite;
+    }
+
+
+    public void setFavourite(boolean favourite) {
+        this.favourite = favourite;
+    }
+
 
 //    public Map<String, Object> getAdditionalProperties() {
 //        return this.additionalProperties;

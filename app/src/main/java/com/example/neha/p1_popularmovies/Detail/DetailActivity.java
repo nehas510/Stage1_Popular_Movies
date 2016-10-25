@@ -15,7 +15,7 @@ public class DetailActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, new DetailFragment())
+                    .replace(R.id.detail_container, new DetailFragment())
                     .commit();
         }
 

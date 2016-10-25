@@ -1,26 +1,51 @@
 package com.example.neha.p1_popularmovies;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends ActionBarActivity {
+import com.example.neha.p1_popularmovies.Detail.DetailActivity;
+import com.example.neha.p1_popularmovies.Detail.DetailFragment;
 
+public class MainActivity extends ActionBarActivity implements GridViewAdapter.Callback{
 
+private boolean isTablet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
         setContentView(R.layout.activity_main);
+        if(findViewById(R.id.detail_container)!=null){
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, new MoviesFragment("popular"))
-                    .commit();
+         isTablet = true;
+
+            if (savedInstanceState == null) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.grid_container, new MoviesFragment("popular",isTablet))
+                        .commit();
+
+
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.detail_container, new DetailFragment())
+                        .commit();
+            }
+
+
+
         }
+    else {
+            isTablet = false;
+            if (savedInstanceState == null) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.grid_container, new MoviesFragment("popular"))
+                        .commit();
+            }
 
-
+        }
     }
 
 
@@ -42,14 +67,15 @@ public class MainActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.popular) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, new MoviesFragment("popular"))
+                    .replace(R.id.grid_container, new MoviesFragment("popular"))
                     .commit();
             return true;
         }
 
         else if(id == R.id.top_rated){
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, new MoviesFragment("top_rated"))
+                .addToBackStack("popular")
+                .replace(R.id.grid_container, new MoviesFragment("top_rated"))
                 .commit();
             return true;
        }
@@ -57,19 +83,45 @@ public class MainActivity extends ActionBarActivity {
 
         else if (id == R.id.upcoming){
                 getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, new MoviesFragment("upcoming"))
+                        .addToBackStack("popular")
+                .replace(R.id.grid_container, new MoviesFragment("upcoming"))
                 .commit();
 
             return true;
         }
         else if(id == R.id.now_playing){
                 getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, new MoviesFragment("now_playing"))
+                        .addToBackStack("popular")
+                .replace(R.id.grid_container, new MoviesFragment("now_playing"))
                 .commit();
+            return true;
+        }
+        else if (id == R.id.favourites) {
+            getSupportFragmentManager().beginTransaction()
+                    .addToBackStack("popular")
+                    .replace(R.id.grid_container, new MoviesFragment("favourites"))
+                    .commit();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    @Override
+    public void onItemSelected(String data) {
+        if (isTablet)
+        {
+
+            getSupportFragmentManager().beginTransaction()
+                                         .replace(R.id.detail_container,new DetailFragment(data,isTablet))
+                                         .commit();
+                     } else {
+                         Intent intent = new Intent(this, DetailActivity.class).
+                         putExtra(Intent.EXTRA_TEXT,data);
+                         startActivity(intent);
+
+                     }
+             }
 
 }

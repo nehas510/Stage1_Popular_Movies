@@ -1,0 +1,10 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- pressed -->
+    <!-- focused -->
+    <!-- default -->
+    <item android:state_pressed="true" android:drawable="@android:drawable/star_on" />
+    <item android:state_selected="true" android:drawable="@android:drawable/star_on" />
+
+
+    <item android:drawable="@android:drawable/star_off" />
+</selector>
