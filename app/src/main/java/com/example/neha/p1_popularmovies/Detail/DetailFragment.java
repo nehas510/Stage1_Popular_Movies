@@ -91,7 +91,7 @@ protected  SpinnerProgressBar spb;
 
                        @Override
                        public void failure(RetrofitError error) {
-                           Toast.makeText(getContext(), "Something is wrong with Reviews!", Toast.LENGTH_SHORT).show();
+                           Toast.makeText(getContext(), "No Reviews", Toast.LENGTH_SHORT).show();
 
                        }
                    });
@@ -100,7 +100,7 @@ protected  SpinnerProgressBar spb;
 
                 @Override
                 public void failure(RetrofitError error) {
-                    Toast.makeText(getContext(), "Something is wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Failed to fetch moveID!", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -211,7 +211,7 @@ protected  SpinnerProgressBar spb;
 
                 @Override
                 public void failure(RetrofitError error) {
-                    Toast.makeText(getContext(), "Something is wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "No Trailers available!", Toast.LENGTH_SHORT).show();
 
 
                 }

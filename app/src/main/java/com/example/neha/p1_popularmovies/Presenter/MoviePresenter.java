@@ -65,7 +65,7 @@ public class MoviePresenter {
             public void failure(RetrofitError error) {
                 if(callback!=null) {
                     ((DetailFragment)mView).hideProgress();
-                    Toast.makeText(mView.getContext(), "something is not right ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mView.getContext(), "Something is wrong, Try after sometime ", Toast.LENGTH_SHORT).show();
                     callback.failure(error);
                 }
             }
@@ -99,7 +99,7 @@ public class MoviePresenter {
             public void failure(RetrofitError error) {
                 if (callback != null) {
                     ((DetailFragment)mView).hideProgress();
-                    Toast.makeText(mView.getContext(), "something is not right ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mView.getContext(), "No trailer available right now! Try after sometime ", Toast.LENGTH_SHORT).show();
                     callback.failure(error);
 
                 }
@@ -128,7 +128,7 @@ public class MoviePresenter {
             public void failure(RetrofitError error) {
                 if (callback != null) {
                     ((DetailFragment)mView).hideProgress();
-                    Toast.makeText(mView.getContext(), "something is not right ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mView.getContext(), "NO reviews available at the moment!", Toast.LENGTH_SHORT).show();
                     callback.failure(error);
 
                 }
@@ -161,7 +161,7 @@ public class MoviePresenter {
                 public void failure(RetrofitError error) {
                     if (callback != null) {
                         ((MoviesFragment) mView).hideProgress();
-                        Toast.makeText(mView.getContext(), "something is not right ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mView.getContext(), "something is wrong, Try after sometime! ", Toast.LENGTH_SHORT).show();
                         callback.failure(error);
 
                     }

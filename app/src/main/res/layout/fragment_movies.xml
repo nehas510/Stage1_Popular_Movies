@@ -9,7 +9,7 @@
     android:paddingRight="7dp"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.neha.p1_popularmovies.MoviesFragment"
-    android:gravity="center">
+    android:gravity="top|center">
 
 
         <android.support.v7.widget.RecyclerView

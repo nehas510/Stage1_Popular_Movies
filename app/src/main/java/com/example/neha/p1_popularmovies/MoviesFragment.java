@@ -104,7 +104,7 @@ public class MoviesFragment extends Fragment {
             spb.dismiss();
         }
     }
-    public void updateRecyclerView(View view, String type){
+    public void updateRecyclerView(View view,String type){
 
 
             recyclerView = (RecyclerView) view.findViewById(R.id.gridRecycler);
@@ -145,11 +145,15 @@ public class MoviesFragment extends Fragment {
         if(type.contains("favourites")){
             realm = Realm.getDefaultInstance();
             realm.beginTransaction();
-            RealmResults<Movies> movies = realm.where(Movies.class).equalTo("favourite",true).findAll();
+         //  PopularMovies movies = realm.where(PopularMovies.class).equalTo("type","favourites").findFirst();
+
+            RealmResults<PopularMovies> popularMovies = realm.where(PopularMovies.class).equalTo("type","favourites").findAll();
+           List<Movies> movies = popularMovies.get(0).getResults().where().distinct("original_title");
             realm.commitTransaction();
             getResults(movies);
+         //   getResults(movies.getResults());
             updateRecyclerView(layoutInflater,type);
-            return layoutInflater;
+
 
 
         }
@@ -164,13 +168,13 @@ else {
 
                 @Override
                 public void failure(RetrofitError error) {
-                    Toast.makeText(getContext(), "Something is wrong!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Failed fetching the movieType!", Toast.LENGTH_SHORT).show();
 
                 }
             });
-            return layoutInflater;
-        }
 
+        }
+        return layoutInflater;
 
 
     }

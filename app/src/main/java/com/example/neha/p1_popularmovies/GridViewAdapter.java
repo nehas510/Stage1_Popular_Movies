@@ -53,7 +53,7 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewHolder> {
 
     @Override
     public void onBindViewHolder(GridViewHolder holder, int position) {
-  if((isTab && position==0) && type.contains("popular"))
+  if(isTab && position==0)
 {
     Context mycontext = holder.imageTitle.getContext();
     String url = BASE_IMG_URL+IMG_SIZE+(titles.get(position).getPosterPath());
@@ -111,6 +111,7 @@ class GridViewHolder extends RecyclerView.ViewHolder{
                 //   mFragment.startActivity(intent);
 
                handleSelectedItem(mFragment);
+                imageTitle.setSelected(true);
 
 
             }
@@ -118,7 +119,7 @@ class GridViewHolder extends RecyclerView.ViewHolder{
     }
 
         void handleSelectedItem(Fragment mFragment){
-
+            imageTitle.setSelected(true);
         ((GridViewAdapter.Callback) mFragment.getActivity()).onItemSelected(String.valueOf(titleData.getId()));
 
     }
