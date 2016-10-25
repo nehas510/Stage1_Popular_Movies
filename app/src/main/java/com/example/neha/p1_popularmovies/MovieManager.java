@@ -18,7 +18,7 @@ public class MovieManager {
 
     //IMPORTANT NOTE:
     // The API Key has been removed as it is Illegal to share the personal API Key, Please put in yours to test the app!
-    private static String API_KEY = "1f46bd218f273adbb2fde3978739c5be";
+    private static String API_KEY = "";
     /**
      * Constructor
      */
